@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
     private bool facingFoward;
     private bool facingBack;
+    public LayerMask ground;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +28,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
+            gameObject.transform.parent = null;
             MovePlayerFoward();
+            ParentWithTerrain();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            gameObject.transform.parent = null;
             MovePlayerBackward();
+            ParentWithTerrain();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            gameObject.transform.parent = null;
             MovePlayerRight();
+            ParentWithTerrain();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            gameObject.transform.parent = null;
             MovePlayerLeft();
+            ParentWithTerrain();
         }
     }
 
@@ -47,24 +56,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (facingLeft)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
             player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
         if (facingRight)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z);
             anim.SetBool("jump", true);
             player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
         }
         if (facingFoward)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
         }
         if (facingBack)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
             player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
         }
@@ -77,25 +86,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (facingFoward)
         {
-            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y, player.transform.position.z - amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z );
             player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingLeft)
         {
-            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y, player.transform.position.z - amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z );
             player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingRight)
         {
-            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y, player.transform.position.z - amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z );
             player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingBack)
         {
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - amountToMove);
+            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
             
         }
@@ -108,24 +117,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (facingFoward)
         {
-            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
             player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingLeft)
         {
-            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
             player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingRight)
         {
-            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
             anim.SetBool("jump", true);
         }
         if (facingBack)
         {
-            player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
             anim.SetBool("jump", true);
             player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
         }
@@ -138,25 +147,25 @@ public class PlayerMovement : MonoBehaviour
     {
         if (facingFoward)
         {
-            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z + amountToMove);
             player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingLeft)
         {
-            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z + amountToMove);
             
             anim.SetBool("jump", true);
         }
         if (facingRight)
         {
-            player.transform.position = new Vector3(player.transform.position.x -  amountToMove, player.transform.position.y, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z + amountToMove);
             player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingBack)
         {
-            player.transform.position = new Vector3(player.transform.position.x - amountToMove, player.transform.position.y, player.transform.position.z );
+            player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z + amountToMove);
             anim.SetBool("jump", true);
             player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
@@ -170,5 +179,18 @@ public class PlayerMovement : MonoBehaviour
       public void HandleEndJump()
     {
         anim.SetBool("jump", false);
+    }
+
+    public void ParentWithTerrain()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 5f, ground))
+        {
+            GameObject groundHit = hit.collider.gameObject;
+
+            player.transform.parent = groundHit.transform;
+        }
+        Debug.DrawRay(transform.position, -transform.up * 5f, Color.red, duration: 4f);
     }
 }
