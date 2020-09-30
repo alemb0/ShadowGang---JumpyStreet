@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class AIMovement : MonoBehaviour
 {
-    [SerializeField] public bool facingLeft;
-    [SerializeField] public bool facingRight;
+    [SerializeField] private bool facingLeft;
+    [SerializeField] private bool facingRight;
     [SerializeField] private float speed;
     // Start is called before the first frame update
     void Start()
     {
-      
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         if (facingLeft)
         {
-            transform.Translate(new Vector3(0, 1, 0) * -speed * Time.deltaTime);
+            transform.Translate(new Vector3(0, 1, 0) * speed * Time.deltaTime);
         }
         else if (facingRight)
         {
@@ -35,6 +34,5 @@ public class AIMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 }

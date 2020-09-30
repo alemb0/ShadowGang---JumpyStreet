@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private bool facingFoward;
     private bool facingBack;
     public LayerMask ground;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             MovePlayerLeft();
             ParentWithTerrain();
         }
+        
     }
 
     private void MovePlayerFoward()
