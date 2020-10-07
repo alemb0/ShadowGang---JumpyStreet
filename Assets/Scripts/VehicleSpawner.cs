@@ -8,9 +8,10 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private GameObject vehicle;
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private bool rightSideSpawn;
-   
+    [SerializeField] private float mintime;
+    [SerializeField] private float maxtime;
 
-   
+
     private int spawnRotation;
     public bool left;
     public bool right;
@@ -26,7 +27,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(3, 5));
+            yield return new WaitForSeconds(Random.Range(mintime, maxtime));
             spawnRotation = Random.Range(0, 2);
             Debug.Log(spawnRotation);
             if (!rightSideSpawn)

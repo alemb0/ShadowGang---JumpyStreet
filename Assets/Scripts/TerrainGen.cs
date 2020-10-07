@@ -10,14 +10,16 @@ public class TerrainGen : MonoBehaviour
     [SerializeField] private List<GameObject> terrains = new List<GameObject>();
     [SerializeField] private List<GameObject> grasses = new List<GameObject>();
     [SerializeField] private List<GameObject> roads = new List<GameObject>();
+    [SerializeField] private List<GameObject> waters = new List<GameObject>();
 
 
     public Transform playerPos;
     private Vector3 currentPos = new Vector3(0, 0, 0);
     private List<GameObject> currentTerrain = new List<GameObject>();
     private GameObject terrain;
-    public GameObject grass;
-    public GameObject road;
+    [SerializeField] private GameObject grass;
+    [SerializeField] private GameObject road;
+    [SerializeField] private GameObject water;
     private GameObject possibleTerrain;
 
 
@@ -28,7 +30,6 @@ public class TerrainGen : MonoBehaviour
         for(int i = 0; i < maxTerrainCount; i++)
         {
             GenerateTerrain();
-            
         }
     }
 
@@ -43,35 +44,39 @@ public class TerrainGen : MonoBehaviour
 
     public void GenerateTerrain()
     {
-        //road = (roads[Random.Range(0, roads.Count)]);
 
         if (currentPos.x - playerPos.position.x < minDistanceFromPlayer)
         {
+           
             possibleTerrain = (terrains[Random.Range(0, terrains.Count)]);
-            Debug.Log(possibleTerrain);
+
             if (possibleTerrain == grass)
             {
                 terrain = Instantiate(grasses[Random.Range(0, grasses.Count)], currentPos, Quaternion.identity);
                 currentTerrain.Add(terrain);
             }
-            if (possibleTerrain == road)
+            else if (possibleTerrain == road)
             {
                 terrain = Instantiate(roads[Random.Range(0, 2)], currentPos, Quaternion.identity);
                 currentTerrain.Add(terrain);
             }
-            else 
+            else if (possibleTerrain == water)
             {
-                terrain = Instantiate(terrains[1], currentPos, Quaternion.identity);
+                terrain = Instantiate(waters[Random.Range(0, 2)], currentPos, Quaternion.identity);
+                currentTerrain.Add(terrain);
             }
-            currentTerrain.Add(terrain);
+            
+            
 
-
+            Debug.Log(currentTerrain.Count);
             if (currentTerrain.Count > maxTerrainCount)
             {
                 Destroy(currentTerrain[0]);
                 currentTerrain.RemoveAt(0);
             }
             currentPos.x++;
+
+           
         }
 
         

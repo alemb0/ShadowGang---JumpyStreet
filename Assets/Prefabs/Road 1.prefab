@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5372069936255049155}
   - component: {fileID: 3714091426725185589}
   - component: {fileID: 6412179318083768584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Road 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,6 +117,8 @@ MonoBehaviour:
   vehicle: {fileID: 544122894543772460, guid: ac3bd48bdba441f4da1d02e42eaafbb6, type: 3}
   spawnPosition: {fileID: 2296633158692701778}
   rightSideSpawn: 1
+  mintime: 3
+  maxtime: 5
   left: 0
   right: 0
 --- !u!1 &2638324281700932833
