@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         facingLeft = false;
         facingRight = false;
         facingBack = false;
+        facingFoward = true;
     }
 
     // Update is called once per frame
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         if (facingFoward)
         {
             player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
-            player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+            player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
             anim.SetBool("jump", true);
         }
         if (facingLeft)
@@ -138,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         {
             player.transform.position = new Vector3(player.transform.position.x , player.transform.position.y , player.transform.position.z - amountToMove);
             anim.SetBool("jump", true);
-            player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
+            player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
         facingFoward = false;
         facingLeft = false;
@@ -192,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject groundHit = hit.collider.gameObject;
 
             player.transform.parent = groundHit.transform;
+           
         }
         Debug.DrawRay(transform.position, -transform.up * 5f, Color.red, duration: 4f);
     }

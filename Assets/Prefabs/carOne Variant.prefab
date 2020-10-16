@@ -8,7 +8,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5180352521816074487}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -130,6 +130,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7cbac46b5e8ebc44e9233c339346d789, type: 3}
       propertyPath: m_Name
       value: carOne Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7cbac46b5e8ebc44e9233c339346d789, type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 928602662818774614, guid: 7cbac46b5e8ebc44e9233c339346d789, type: 3}
       propertyPath: m_Materials.Array.data[0]
