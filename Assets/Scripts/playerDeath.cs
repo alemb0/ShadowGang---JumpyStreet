@@ -6,6 +6,7 @@ public class playerDeath : MonoBehaviour
 {
     public ParticleSystem hitDeathParticle;
     public ParticleSystem drownParticle;
+    public ScoreKeeper scoreScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +24,12 @@ public class playerDeath : MonoBehaviour
         if(hit.gameObject.tag == "Car")
         {
             PlayerHitDeath();
+            scoreScript.alive = false;
         }
         if(hit.gameObject.tag == "Water")
         {
             PlayerDrownDeath();
+            scoreScript.alive = false;
         }
     }
 
