@@ -27,7 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingLeft: 0
   facingRight: 0
-  speed: 6
+  speed: 8
 --- !u!1001 &2759103912903290134
 PrefabInstance:
   m_ObjectHideFlags: 0

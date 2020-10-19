@@ -7,10 +7,14 @@ public class AIMovement : MonoBehaviour
     [SerializeField] public bool facingLeft;
     [SerializeField] public bool facingRight;
     [SerializeField] private float speed;
+    [SerializeField] private bool isLog;
     // Start is called before the first frame update
     void Start()
     {
-      
+        if (isLog == true)
+        {
+            speed = Random.Range(5, 6);
+        }
     }
 
     // Update is called once per frame
@@ -35,6 +39,8 @@ public class AIMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        
 
     }
 }

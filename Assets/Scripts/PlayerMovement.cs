@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private bool facingFoward;
     private bool facingBack;
     public LayerMask ground;
-    
+    public LayerMask tree;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,26 +32,42 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         {
             gameObject.transform.parent = null;
-            MovePlayerFoward();
-            ParentWithTerrain();
+            if (CollisionDetection() == false)
+            {
+                MovePlayerFoward();
+                ParentWithTerrain();
+            }
+ 
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             gameObject.transform.parent = null;
-            MovePlayerBackward();
-            ParentWithTerrain();
+            if (CollisionDetection() == false)
+            {
+                MovePlayerBackward();
+                ParentWithTerrain();
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             gameObject.transform.parent = null;
-            MovePlayerRight();
-            ParentWithTerrain();
+            if (CollisionDetection() == false)
+            {
+                MovePlayerRight();
+                ParentWithTerrain();
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             gameObject.transform.parent = null;
-            MovePlayerLeft();
-            ParentWithTerrain();
+            if (CollisionDetection() == false)
+            {
+                MovePlayerLeft();
+                ParentWithTerrain();
+            };
+            
         }
         
     }
@@ -196,5 +213,23 @@ public class PlayerMovement : MonoBehaviour
            
         }
         Debug.DrawRay(transform.position, -transform.up * 5f, Color.red, duration: 4f);
+    }
+
+    public bool CollisionDetection()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.right * 1f, Color.blue, duration: 4f);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(transform.right), out hit, 1f, tree))
+        {
+            GameObject treeHit = hit.collider.gameObject;
+            return true;
+        }
+        else
+        {
+            
+            return false;
+        }
+        
+
     }
 }

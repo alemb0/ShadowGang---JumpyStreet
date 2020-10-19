@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingLeft: 0
   facingRight: 0
-  speed: 6
+  speed: 8
 --- !u!65 &-2593535202423517306
 BoxCollider:
   m_ObjectHideFlags: 0

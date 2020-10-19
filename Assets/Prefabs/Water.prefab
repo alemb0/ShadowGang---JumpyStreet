@@ -144,7 +144,7 @@ MonoBehaviour:
   vehicle: {fileID: 5865243228577752933, guid: eadc969addd36e84f9e092765e205664, type: 3}
   spawnPosition: {fileID: 3156765720662407007}
   rightSideSpawn: 1
-  mintime: 3
-  maxtime: 5
+  mintime: 1.5
+  maxtime: 2.5
   left: 0
   right: 0

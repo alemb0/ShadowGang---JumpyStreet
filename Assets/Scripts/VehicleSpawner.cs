@@ -27,9 +27,11 @@ public class VehicleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(mintime, maxtime));
+            Debug.Log(mintime);
+            Debug.Log(maxtime);
+            yield return new WaitForSeconds(Random.Range(2.0f, 4f));
             spawnRotation = Random.Range(0, 2);
-            Debug.Log(spawnRotation);
+          
             if (!rightSideSpawn)
             {
                 GameObject vhl = Instantiate(vehicles[Random.Range(0, vehicles.Count)], spawnPosition.position, Quaternion.Euler(-90, 0,-180));
