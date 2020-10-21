@@ -14,7 +14,7 @@ public class ScoreKeeper : MonoBehaviour
     void Start()
     {
         alive = true;
-        score = 0;
+        score = -1;
        
         
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject player;
+    private Vector3 fwd;
     public int amountToMove;
     private Animator anim;
     private bool facingLeft;
@@ -29,9 +30,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Fwd Vector needs to be used to keep raycast shooting foward, due to strange orientation issues
         if(Input.GetKeyDown(KeyCode.W))
         {
             gameObject.transform.parent = null;
+            fwd = new Vector3(1, 0, 0);
+            
             if (CollisionDetection() == false)
             {
                 MovePlayerFoward();
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             gameObject.transform.parent = null;
+            fwd = new Vector3(-1,0,0);
             if (CollisionDetection() == false)
             {
                 MovePlayerBackward();
@@ -52,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             gameObject.transform.parent = null;
+            fwd = new Vector3(0, 0, -1);
             if (CollisionDetection() == false)
             {
                 MovePlayerRight();
@@ -62,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             gameObject.transform.parent = null;
+            fwd = new Vector3(0, 0, 1);
             if (CollisionDetection() == false)
             {
                 MovePlayerLeft();
@@ -78,23 +86,28 @@ public class PlayerMovement : MonoBehaviour
         {
             player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
+           
             player.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
         }
         if (facingRight)
         {
             player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z);
             anim.SetBool("jump", true);
+           
             player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
         }
         if (facingFoward)
         {
             player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
+           
             anim.SetBool("jump", true);
+            
         }
         if (facingBack)
         {
             player.transform.position = new Vector3(player.transform.position.x + amountToMove, player.transform.position.y, player.transform.position.z );
             anim.SetBool("jump", true);
+           
             player.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
         }
         facingFoward = true;
@@ -218,8 +231,8 @@ public class PlayerMovement : MonoBehaviour
     public bool CollisionDetection()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.right * 1f, Color.blue, duration: 4f);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(transform.right), out hit, 1f, tree))
+        Debug.DrawRay(transform.position, fwd * 1f, Color.blue, duration: 4f);
+        if (Physics.Raycast(transform.position, fwd, out hit, 1f, tree))
         {
             GameObject treeHit = hit.collider.gameObject;
             return true;
