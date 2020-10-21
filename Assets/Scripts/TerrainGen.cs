@@ -21,6 +21,7 @@ public class TerrainGen : MonoBehaviour
     [SerializeField] private GameObject road;
     [SerializeField] private GameObject water;
     private GameObject possibleTerrain;
+    private int counter;
 
 
     // Start is called before the first frame update
@@ -62,8 +63,18 @@ public class TerrainGen : MonoBehaviour
             }
             else if (possibleTerrain == water)
             {
-                terrain = Instantiate(waters[Random.Range(0, 2)], currentPos, Quaternion.identity);
-                currentTerrain.Add(terrain);
+                counter++;
+               if(counter % 2 == 0)
+                {
+                    terrain = Instantiate(waters[0], currentPos, Quaternion.identity);
+                    currentTerrain.Add(terrain);
+                }
+                else
+                {
+                    terrain = Instantiate(waters[1], currentPos, Quaternion.identity);
+                    currentTerrain.Add(terrain);
+                }
+                  
             }
             
             
