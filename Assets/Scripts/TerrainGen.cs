@@ -76,10 +76,7 @@ public class TerrainGen : MonoBehaviour
                 }
                   
             }
-            
-            
 
-            //Debug.Log(currentTerrain.Count);
             if (currentTerrain.Count > maxTerrainCount)
             {
                 Destroy(currentTerrain[0]);

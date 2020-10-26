@@ -13,11 +13,16 @@ public class titleController : MonoBehaviour
 
     public void StartInstruction()
     {
-        //GO TO INSTRUCTIONS
+        SceneManager.LoadScene("InstructionsScene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 }

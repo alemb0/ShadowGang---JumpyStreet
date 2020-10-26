@@ -15,12 +15,6 @@ public class ScoreKeeper : MonoBehaviour
     {
         alive = true;
         score = -1;
-       
-        
-
-
-          
-        
     }
 
     private void Update()
@@ -36,13 +30,11 @@ public class ScoreKeeper : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 10f, ground))
             {
                 GameObject groundHit = hit.collider.gameObject;
-                Debug.Log(groundHit);
                 if (groundHit.tag == "Untagged")
                 {
                     groundHit.tag = "Hit";
                     score++;
                     scoreText.text = score.ToString();
-                    Debug.Log(groundHit);
                 }
 
                 yield return null;

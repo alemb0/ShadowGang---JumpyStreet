@@ -22,13 +22,10 @@ public class VehicleSpawner : MonoBehaviour
         
     }
 
-
     private IEnumerator SpawnVehicle()
     {
         while (true)
         {
-            Debug.Log(mintime);
-            Debug.Log(maxtime);
             
             spawnRotation = Random.Range(0, 2);
           
